@@ -1,0 +1,36 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input #firstName="ngModel" [(ngModel)]="student.firstName" name="firstName" id="firstName" type="text"
+            class="form-control" required>
+        <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
+            First Name is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input #lastName="ngModel" [(ngModel)]="student.lastName" name="lastName" id="lastName" type="text"
+            (change)="onChangeCheckLastName(f.value.lastName)" class="form-control" required>
+        <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
+            Last Name is required.
+        </div>
+        <div *ngIf="disabled" class="alert alert-danger">
+            Last Name already exist.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input #age="ngModel" [(ngModel)]="student.age" name="age" id="age" type="number" class="form-control" required>
+        <div *ngIf="age.touched && age.invalid" class="alert alert-danger">
+            Age is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gpa">GPA</label>
+        <input #gpa="ngModel" [(ngModel)]="student.gpa" name="gpa" id="gpa" type="number" class="form-control" required>
+        <div *ngIf="gpa.touched && gpa.invalid" class="alert alert-danger">
+            GPA Name is required.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid || disabled">Save</button>
+</form>

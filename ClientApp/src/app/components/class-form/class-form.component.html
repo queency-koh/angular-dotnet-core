@@ -1,0 +1,27 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+    <div class="form-group">
+        <label for="className">Class Name</label>
+        <input #className="ngModel" [(ngModel)]="classModel.className" name="className" id="className" type="text"
+            class="form-control" required>
+        <div *ngIf="className.touched && className.invalid" class="alert alert-danger">
+            Class Name is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input #location="ngModel" [(ngModel)]="classModel.location" name="location" id="location" type="text"
+            class="form-control" required>
+        <div *ngIf="location.touched && location.invalid" class="alert alert-danger">
+            Location is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="teacherName">Teacher Name</label>
+        <input #teacherName="ngModel" [(ngModel)]="classModel.teacherName" name="teacherName" id="teacherName"
+            type="text" class="form-control" required>
+        <div *ngIf="teacherName.touched && teacherName.invalid" class="alert alert-danger">
+            Teacher Name is required.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

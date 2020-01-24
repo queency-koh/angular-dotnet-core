@@ -1,0 +1,33 @@
+<div class="pt-5">
+    <h3 class="d-flex flex-row">{{ classModel.className | titlecase  }}</h3>
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-bordered table-hover m-0">
+                <thead>
+                    <tr>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">GPA</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of classModel.students">
+                        <th scope="row" [ngStyle]="{'color': (student.gpa > 3.2) ? 'red' : 'black'}">
+                            {{ student.firstName }} {{ student.lastName }}</th>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.gpa }}</td>
+                        <td><a [routerLink]="['/student/', student.id]">Edit</a></td>
+                        <td><a (click)="delete(student.id)" class="text-danger">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex align-items-end col-4">
+            <div class="d-flex align-items-end">
+                <a [routerLink]="['/student/new/', classModel.id]" class="btn btn-primary">Add</a>
+            </div>
+        </div>
+    </div>
+</div>
